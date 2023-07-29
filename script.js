@@ -51,6 +51,16 @@ function operate(operator, numA, numB) {
         return null;
     }
 
+    if(numB === 0) {
+        firstNum = undefined;
+        operator = undefined;
+        secondNum = undefined;
+        displayText = '0';
+        display.textContent = '>:(';
+
+        return null;
+    }
+
     if(operator === 'add') {
         return add(numA, numB);
     } else if(operator === 'subtract') {
@@ -64,9 +74,19 @@ function operate(operator, numA, numB) {
     }
 }
 
-let firstNum; // The number that will be `numA` in the math functions above
-let operator; // This will be set to the name of the function to be called
-let secondNum; // The number that will be the `numA` in the math functions above
+function clear(event) {
+    displayText = '0';
+    display.textContent = displayText;
+    firstNum = undefined;
+    operator = undefined;
+    secondNum = undefined;
+
+    event.stopPropagation();
+}
+
+let firstNum = undefined; // The number that will be `numA` in the math functions above
+let operator = undefined; // This will be set to the name of the function to be called
+let secondNum = undefined; // The number that will be the `numA` in the math functions above
 
 const display = document.querySelector('.display');
 const buttonZero = document.querySelector('.zero');
@@ -92,15 +112,12 @@ const buttonEquals = document.querySelector('.equals');
 let displayText = '0';
 display.textContent = displayText;
 
-buttonClear.addEventListener('click', (event) => {
-    displayText = '0';
-    display.textContent = displayText;
-
-    event.stopPropagation();
-});
+buttonClear.addEventListener('click', clear);
 
 buttonSign.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -116,7 +133,9 @@ buttonSign.addEventListener('click', (event) => {
 });
 
 buttonZero.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -133,7 +152,12 @@ buttonZero.addEventListener('click', (event) => {
 });
 
 buttonDecimal.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    } else if(displayText.includes('.')) {
         event.stopPropagation();
         return;
     }
@@ -145,7 +169,9 @@ buttonDecimal.addEventListener('click', (event) => {
 });
 
 buttonOne.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -164,7 +190,9 @@ buttonOne.addEventListener('click', (event) => {
 });
 
 buttonTwo.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -183,7 +211,9 @@ buttonTwo.addEventListener('click', (event) => {
 });
 
 buttonThree.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -202,7 +232,9 @@ buttonThree.addEventListener('click', (event) => {
 });
 
 buttonFour.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -221,7 +253,9 @@ buttonFour.addEventListener('click', (event) => {
 });
 
 buttonFive.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -240,7 +274,9 @@ buttonFive.addEventListener('click', (event) => {
 });
 
 buttonSix.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -259,7 +295,9 @@ buttonSix.addEventListener('click', (event) => {
 });
 
 buttonSeven.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -278,7 +316,9 @@ buttonSeven.addEventListener('click', (event) => {
 });
 
 buttonEight.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -297,7 +337,9 @@ buttonEight.addEventListener('click', (event) => {
 });
 
 buttonNine.addEventListener('click', (event) => {
-    if(displayText.length === 12) {
+    if(displayText === null) {
+        clear(event);
+    } else if(displayText.length === 12) {
         event.stopPropagation();
         return;
     }
@@ -313,4 +355,157 @@ buttonNine.addEventListener('click', (event) => {
     
         event.stopPropagation();
     }
+});
+
+buttonDivide.addEventListener('click', (event) => {
+    if(operator !== undefined) {
+        if(displayText !== '0') {
+            secondNum = +displayText;
+            let result = operate(operator, firstNum, secondNum);
+            firstNum = result;
+            
+            displayText = '0';
+            display.textContent = displayText;
+            
+            operator = 'divide';
+            
+            event.stopPropagation();
+            return;
+        } else {
+            operator = 'divide';
+        }
+
+        event.stopPropagation();
+        return;
+    }
+
+    if(displayText === null) {
+        firstNum = 0;
+    } else {
+        firstNum = +displayText;
+    }
+
+    operator = 'divide';
+
+    displayText = '0';
+    display.textContent = displayText;
+    event.stopPropagation();
+});
+
+buttonMultiply.addEventListener('click', (event) => {
+    if(operator !== undefined) {
+        if(displayText !== '0') {
+            secondNum = +displayText;
+            let result = operate(operator, firstNum, secondNum);
+            firstNum = result;
+            
+            displayText = '0';
+            display.textContent = displayText;
+            
+            operator = 'multiply';
+            
+            event.stopPropagation();
+            return;
+        } else {
+            operator = 'multiply';
+        }
+    }
+
+    if(displayText === null) {
+        firstNum = 0;
+    } else {
+        firstNum = +displayText;
+    }
+
+    operator = 'multiply';
+
+    displayText = '0';
+    display.textContent = displayText;
+    event.stopPropagation();
+});
+
+buttonSubtract.addEventListener('click', (event) => {
+    if(operator !== undefined) {
+        if(displayText !== '0') {
+            secondNum = +displayText;
+            let result = operate(operator, firstNum, secondNum);
+            firstNum = result;
+            
+            displayText = '0';
+            display.textContent = displayText;
+            
+            operator = 'subtract';
+            
+            event.stopPropagation();
+            return;
+        } else {
+            operator = 'subtract';
+        }
+    }
+
+    if(displayText === null) {
+        firstNum = 0;
+    } else {
+        firstNum = +displayText;
+    }
+
+    operator = 'subtract';
+
+    displayText = '0';
+    display.textContent = displayText;
+    event.stopPropagation();
+});
+
+buttonAdd.addEventListener('click', (event) => {
+    if(operator !== undefined) {
+        if(displayText !== '0') {
+            secondNum = +displayText;
+            let result = operate(operator, firstNum, secondNum);
+            firstNum = result;
+            
+            displayText = '0';
+            display.textContent = displayText;
+            
+            operator = 'add';
+            
+            event.stopPropagation();
+            return;
+        } else {
+            operator = 'add';
+        }
+    }
+
+    if(displayText === null) {
+        firstNum = 0;
+    } else {
+        firstNum = +displayText;
+    }
+
+    operator = 'add';
+
+    displayText = '0';
+    display.textContent = displayText;
+    event.stopPropagation();
+});
+
+buttonEquals.addEventListener('click', (event) => {
+    secondNum = +displayText;
+    displayText = operate(operator, firstNum, secondNum);
+    if(displayText === null) {
+        event.stopPropagation();
+        return;
+    } else {
+        displayText = displayText.toString();
+    }
+    
+    if(displayText.length > 12) {
+        displayText = 'Too large!';
+    }
+
+    display.textContent = displayText;
+
+    firstNum = undefined;
+    secondNum = undefined;
+    operator = undefined;
+    event.stopPropagation();
 });

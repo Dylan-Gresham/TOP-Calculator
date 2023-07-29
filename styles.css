@@ -1,6 +1,7 @@
 * {
     background-color: #121212;
     color: white;
+    font-size: 12px;
 }
 
 button {
@@ -52,8 +53,8 @@ body {
     gap: 2px;
 }
 
-.container > .buttons > .numberButtons > .row >  #percentageButton {
-    padding: 6px 8px;
+.container > .buttons > .numberButtons > .row > .funcButton {
+    background-color: #ed5833;
 }
 
 .container > .buttons > .numberButtons > .row >  #zeroButton {
@@ -68,4 +69,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2px;
+}
+
+.container > .buttons > .functionButtons > .funcButton {
+    background-color: #ed5833;
 }
