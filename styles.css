@@ -37,6 +37,8 @@ body {
     border: 2px solid white;
     padding: 0 12px;
     margin-bottom: 2px;
+    width: 80%;
+    text-align: right;
 }
 
 .container > .buttons {

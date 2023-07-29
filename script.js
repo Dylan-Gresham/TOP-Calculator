@@ -88,3 +88,5 @@ const buttonMultiply = document.querySelector('.multiply');
 const buttonSubtract = document.querySelector('.subtract');
 const buttonAdd = document.querySelector('.add');
 const buttonEquals = document.querySelector('.equals');
+
+display.textContent = '0';
