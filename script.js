@@ -88,6 +88,7 @@ let firstNum = undefined; // The number that will be `numA` in the math function
 let operator = undefined; // This will be set to the name of the function to be called
 let secondNum = undefined; // The number that will be the `numA` in the math functions above
 
+const body = document.querySelector('body');
 const display = document.querySelector('.display');
 const buttonZero = document.querySelector('.zero');
 const buttonDecimal = document.querySelector('.dot');
@@ -508,4 +509,49 @@ buttonEquals.addEventListener('click', (event) => {
     secondNum = undefined;
     operator = undefined;
     event.stopPropagation();
+});
+
+body.addEventListener('keypress', (event) => {
+    event.preventDefault();
+    
+    if(event.key === '1') {
+        buttonOne.click();
+    } else if(event.key === '2') {
+        buttonTwo.click();
+    } else if(event.key === '3') {
+        buttonThree.click();
+    } else if(event.key === '4') {
+        buttonFour.click();
+    } else if(event.key === '5') {
+        buttonFive.click();
+    } else if(event.key === '6') {
+        buttonSix.click();
+    } else if(event.key === '7') {
+        buttonSeven.click();
+    } else if(event.key === '8') {
+        buttonEight.click();
+    } else if(event.key === '9') {
+        buttonNine.click();
+    } else if(event.key === '0') {
+        buttonZero.click();
+    } else if(event.key === '-') {
+        buttonSubtract.click();
+    } else if(event.key === '+') {
+        buttonAdd.click();
+    } else if(event.key === '*') {
+        buttonMultiply.click();
+    } else if(event.key === 'x') {
+        buttonMultiply.click();
+    } else if(event.key === '/') {
+        buttonDivide.click();
+    } else if(event.key === '=') {
+        buttonEquals.click();
+    }  else if(event.key === 'Enter') {
+        buttonEquals.click();
+    } else if(event.key === '.') {
+        buttonDecimal.click();
+    }
+
+    event.stopPropagation();
+    return;
 });
