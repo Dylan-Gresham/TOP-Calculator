@@ -45,3 +45,25 @@ function divide(numA, numB) {
         return null;
     }
 }
+
+function operate(operator, numA, numB) {
+    if(typeof operator !== 'string' && typeof numA !== 'number' && typeof numB !== 'number') {
+        return null;
+    }
+
+    if(operator === 'add') {
+        return add(numA, numB);
+    } else if(operator === 'subtract') {
+        return subtract(numA, numB);
+    } else if(operator === 'multiply') {
+        return multiply(numA, numB);
+    } else if(operator === 'divide') {
+        return divide(numA, numB);
+    } else {
+        return null;
+    }
+}
+
+let firstNum; // The number that will be `numA` in the math functions above
+let operator; // This will be set to the name of the function to be called
+let secondNum; // The number that will be the `numA` in the math functions above
