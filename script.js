@@ -89,4 +89,228 @@ const buttonSubtract = document.querySelector('.subtract');
 const buttonAdd = document.querySelector('.add');
 const buttonEquals = document.querySelector('.equals');
 
-display.textContent = '0';
+let displayText = '0';
+display.textContent = displayText;
+
+buttonClear.addEventListener('click', (event) => {
+    displayText = '0';
+    display.textContent = displayText;
+
+    event.stopPropagation();
+});
+
+buttonSign.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText[0] === '-') {
+        displayText = displayText.slice(1);
+    } else if(displayText[0] !== '0') {
+        displayText = '-' + displayText;
+    }
+    display.textContent = displayText;
+
+    event.stopPropagation();
+});
+
+buttonZero.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        event.stopPropagation();
+        return;
+    } else {  
+        displayText += '0';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonDecimal.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    displayText += '.';
+    display.textContent = displayText;
+
+    event.stopPropagation();
+});
+
+buttonOne.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '1';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '1';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonTwo.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '2';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '2';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonThree.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '3';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '3';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonFour.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '4';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '4';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonFive.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '5';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '5';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonSix.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '6';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '6';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonSeven.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '7';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '7';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonEight.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '8';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '8';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
+
+buttonNine.addEventListener('click', (event) => {
+    if(displayText.length === 12) {
+        event.stopPropagation();
+        return;
+    }
+    
+    if(displayText === '0') {
+        displayText = '9';
+        display.textContent = displayText;
+
+        event.stopPropagation();
+    } else {
+        displayText += '9';
+        display.textContent = displayText;
+    
+        event.stopPropagation();
+    }
+});
