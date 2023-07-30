@@ -102,7 +102,7 @@ const buttonSeven = document.querySelector('.seven');
 const buttonEight = document.querySelector('.eight');
 const buttonNine = document.querySelector('.nine');
 const buttonClear = document.querySelector('.clear');
-const buttonPercentage = document.querySelector('.percentage');
+const buttonDelete = document.querySelector('.delete');
 const buttonSign = document.querySelector('.sign');
 const buttonDivide = document.querySelector('.divide');
 const buttonMultiply = document.querySelector('.multiply');
@@ -114,6 +114,17 @@ let displayText = '0';
 display.textContent = displayText;
 
 buttonClear.addEventListener('click', clear);
+
+buttonDelete.addEventListener('click', (event) => {
+    if(displayText.length === 1) {
+        displayText = '0';
+    } else {
+        displayText = displayText.slice(0, displayText.length - 1);
+    }
+    display.textContent = displayText;
+
+    event.stopPropagation();
+});
 
 buttonSign.addEventListener('click', (event) => {
     if(displayText === null) {
@@ -550,6 +561,12 @@ body.addEventListener('keypress', (event) => {
         buttonEquals.click();
     } else if(event.key === '.') {
         buttonDecimal.click();
+    } else if(event.key === 'c' || event.key === 'C') {
+        buttonClear.click();
+    } else if(event.key === 's' || event.key === 'S') {
+        buttonSign.click();
+    } else if(event.key === 'd' || event.key === 'D') {
+        buttonDelete.click();
     }
 
     event.stopPropagation();
